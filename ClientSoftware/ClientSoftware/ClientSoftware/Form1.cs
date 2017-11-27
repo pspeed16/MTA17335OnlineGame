@@ -26,5 +26,64 @@ namespace ClientSoftware
             pictureBox8.Parent = PictureContainer;
             pictureBox9.Parent = PictureContainer;
         }
+
+        int cValue = 1;
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            player();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            player();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            player();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            player();
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            player();
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            player();
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            player();
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+            player();
+        }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+
+        }
+        void player()
+        {
+            if (cValue == 2)
+            {
+                cValue = 1;
+            }
+            else if (cValue == 1)
+            {
+                cValue = 2;
+            }
+
+        }
     }
 }
