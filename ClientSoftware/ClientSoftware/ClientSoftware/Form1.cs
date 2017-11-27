@@ -25,6 +25,17 @@ namespace ClientSoftware
             pictureBox7.Parent = PictureContainer;
             pictureBox8.Parent = PictureContainer;
             pictureBox9.Parent = PictureContainer;
+
+
+            var pictureBoxes = new List<PictureBox> { pictureBox1,
+                                                      pictureBox2,
+                                                      pictureBox3,
+                                                      pictureBox4,
+                                                      pictureBox5,
+                                                      pictureBox6,
+                                                      pictureBox7,
+                                                      pictureBox8,
+                                                      pictureBox9 };
         }
 
         int cValue = 1;
@@ -32,12 +43,14 @@ namespace ClientSoftware
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             player();
-            
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             player();
+
+
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -86,5 +99,20 @@ namespace ClientSoftware
             }
 
         }
+
+        void changeFunction()
+        {
+
+            if (cValue == 1)
+            {
+                pictureBoxes[1] = Properties.Resources.O;
+            }
+            else if (cValue == 2)
+            {
+                pictureBox1.Image = Properties.Resources.X;
+            }
+            pictureBox1.Enabled = false;
+        }
+
     }
 }

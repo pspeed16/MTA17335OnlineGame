@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.PictureContainer = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -73,7 +72,7 @@
             this.PictureContainer.Controls.Add(this.pictureBox2, 1, 0);
             this.PictureContainer.Controls.Add(this.pictureBox1, 0, 0);
             this.PictureContainer.Location = new System.Drawing.Point(13, 75);
-            this.PictureContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PictureContainer.Margin = new System.Windows.Forms.Padding(4);
             this.PictureContainer.Name = "PictureContainer";
             this.PictureContainer.RowCount = 3;
             this.PictureContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -139,7 +138,7 @@
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox5.Location = new System.Drawing.Point(201, 129);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(182, 110);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -152,7 +151,7 @@
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox4.Location = new System.Drawing.Point(6, 128);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(184, 112);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -164,7 +163,6 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(393, 4);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
@@ -178,7 +176,6 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(199, 4);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
@@ -192,7 +189,6 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(5, 4);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
@@ -220,7 +216,7 @@
             this.ClientSize = new System.Drawing.Size(611, 457);
             this.Controls.Add(this.winOrLoseLabel);
             this.Controls.Add(this.PictureContainer);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.PictureContainer.ResumeLayout(false);
