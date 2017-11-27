@@ -32,6 +32,7 @@ namespace ClientSoftware
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             player();
+            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
