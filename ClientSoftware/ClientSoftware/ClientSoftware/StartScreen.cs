@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+
 
 
 namespace ClientSoftware
@@ -21,8 +23,17 @@ namespace ClientSoftware
         private void connectButton_Click(object sender, EventArgs e)
         {
             Form1 startGame = new Form1();
-
+            connectInfoLabel.Text += ipInput.Text;
+            connectInfoLabel.Text += portInput.Text;
             startGame.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+
     }
 }
