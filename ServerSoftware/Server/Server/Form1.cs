@@ -64,12 +64,22 @@ namespace Server
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-
+            while (client.Connected)
+            {
+                //recive data
+            }
         }
 
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
-
+            if (client.Connected)
+            {
+                //send data
+            }
+            else
+            {
+                MessageBox.Show("Send failed");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
