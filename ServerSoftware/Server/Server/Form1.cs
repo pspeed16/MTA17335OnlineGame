@@ -94,7 +94,12 @@ namespace Server
             backgroundWorker2.CancelAsync();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
         {
             client = new TcpClient();
             IPEndPoint IpEnd = new IPEndPoint(IPAddress.Parse(label2.Text), int.Parse(label4.Text));
@@ -102,7 +107,7 @@ namespace Server
             try
             {
                 client.Connect(IpEnd);
-                if(client.Connected)
+                if (client.Connected)
                 {
                     textBox1.AppendText("Connected to server" + "\n");
                     STW = new StreamWriter(client.GetStream());
@@ -112,16 +117,11 @@ namespace Server
                     backgroundWorker1.RunWorkerAsync();
                     backgroundWorker2.WorkerSupportsCancellation = true;
                 }
-            }catch(Exception x)
+            }
+            catch (Exception x)
             {
                 MessageBox.Show(x.Message.ToString());
             }
-        
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
