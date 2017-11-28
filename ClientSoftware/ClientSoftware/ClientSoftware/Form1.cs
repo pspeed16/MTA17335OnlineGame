@@ -16,6 +16,13 @@ namespace ClientSoftware
         private Image x;
         private Image o;
         private Image noImage;
+
+        bool winner = false;
+
+
+        int cValue = 1;
+        int turn_count = 1;
+
         public Form1()
         {
             InitializeComponent();
@@ -35,9 +42,7 @@ namespace ClientSoftware
             noImage = ClientSoftware.Properties.Resources.None;
 
         }
-    
-        int cValue = 1;
-        int turn_count = 1;
+
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -187,7 +192,7 @@ namespace ClientSoftware
         
         void winCondition()
         {
-            bool winner = false;
+           
 
             //horizontal win condition
             if (pictureBox1.Image == x && pictureBox2.Image == x && pictureBox3.Image == x || pictureBox1.Image == o && pictureBox2.Image == o && pictureBox3.Image == o)
@@ -240,161 +245,9 @@ namespace ClientSoftware
             {
                 MessageBox.Show("Draw!");
             }
+
+            resetGame();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         void resetGame()
         {
@@ -408,7 +261,7 @@ namespace ClientSoftware
                                                       pictureBox7,
                                                       pictureBox8,
                                                       pictureBox9 };
-            if (turn_count == 9)
+            if (turn_count == 9 || winner == true)
             {
                 for (int i = 0; i < 9; i++)
                 {
