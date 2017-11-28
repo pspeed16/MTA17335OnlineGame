@@ -19,6 +19,7 @@ namespace Server
         public StreamReader STR;
         public StreamWriter STW;
         public string recieve;
+        public string textToSend;
 
         public Form1()
         {
@@ -66,7 +67,16 @@ namespace Server
         {
             while (client.Connected)
             {
-                //recive data
+                try
+                {
+                    recieve = STR.ReadLine();
+                    this.textBox1.Invoke(new MethodInvoker ( delegate () {textBox1.AppendText("Client:" + recieve + "\n");}));
+                    recieve = "";
+                }
+                catch(Exception x)
+                {
+                    MessageBox.Show(x.Message.ToString());
+                }
             }
         }
 
@@ -74,12 +84,14 @@ namespace Server
         {
             if (client.Connected)
             {
-                //send data
+                STW.WriteLine(textToSend);
+                this.textBox1.Invoke(new MethodInvoker(delegate () { textBox1.AppendText("Server:" + textToSend + "\n"); }));
             }
             else
             {
                 MessageBox.Show("Send failed");
             }
+            backgroundWorker2.CancelAsync();
         }
 
         private void button2_Click(object sender, EventArgs e)
