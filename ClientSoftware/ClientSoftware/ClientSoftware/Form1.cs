@@ -147,7 +147,7 @@ namespace ClientSoftware
         
         void winCondition()
         {
-            if (pictureBox1.Image == x && pictureBox2.Image == x && pictureBox3.Image == x)
+            if (pictureBox1.Image == x && pictureBox2.Image == x && pictureBox3.Image == x || pictureBox1.Image == o && pictureBox2.Image == o && pictureBox3.Image == o)
             {
                 pictureBox1.Enabled = true;
                 MessageBox.Show("Hello");
