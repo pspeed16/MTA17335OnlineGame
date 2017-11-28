@@ -28,138 +28,136 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.ipLabel = new System.Windows.Forms.Label();
+            this.ipLabel2 = new System.Windows.Forms.Label();
+            this.portLabel = new System.Windows.Forms.Label();
+            this.portLabel2 = new System.Windows.Forms.Label();
+            this.StartButton = new System.Windows.Forms.Button();
+            this.threadReceiver = new System.ComponentModel.BackgroundWorker();
+            this.threadSender = new System.ComponentModel.BackgroundWorker();
+            this.textChat = new System.Windows.Forms.TextBox();
+            this.textMessage = new System.Windows.Forms.TextBox();
+            this.SendButton = new System.Windows.Forms.Button();
+            this.ConnectButton = new System.Windows.Forms.Button();
+            this.clientIP = new System.Windows.Forms.TextBox();
+            this.clientPort = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // label1
+            // ipLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(170, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Current IP address:";
-      
+            this.ipLabel.AutoSize = true;
+            this.ipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipLabel.Location = new System.Drawing.Point(12, 31);
+            this.ipLabel.Name = "ipLabel";
+            this.ipLabel.Size = new System.Drawing.Size(170, 24);
+            this.ipLabel.TabIndex = 0;
+            this.ipLabel.Text = "Current IP address:";
             // 
-            // label2
+            // ipLabel2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(207, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 24);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "IP address";
+            this.ipLabel2.AutoSize = true;
+            this.ipLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipLabel2.Location = new System.Drawing.Point(207, 31);
+            this.ipLabel2.Name = "ipLabel2";
+            this.ipLabel2.Size = new System.Drawing.Size(98, 24);
+            this.ipLabel2.TabIndex = 1;
+            this.ipLabel2.Text = "IP address";
             // 
-            // label3
+            // portLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 85);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 24);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Current Port:";
-           
+            this.portLabel.AutoSize = true;
+            this.portLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.portLabel.Location = new System.Drawing.Point(12, 85);
+            this.portLabel.Name = "portLabel";
+            this.portLabel.Size = new System.Drawing.Size(115, 24);
+            this.portLabel.TabIndex = 2;
+            this.portLabel.Text = "Current Port:";
             // 
-            // label4
+            // portLabel2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(207, 85);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 24);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "123";
+            this.portLabel2.AutoSize = true;
+            this.portLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.portLabel2.Location = new System.Drawing.Point(207, 85);
+            this.portLabel2.Name = "portLabel2";
+            this.portLabel2.Size = new System.Drawing.Size(40, 24);
+            this.portLabel2.TabIndex = 3;
+            this.portLabel2.Text = "123";
             // 
-            // button1
+            // StartButton
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(16, 327);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 50);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Start Server";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.StartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartButton.Location = new System.Drawing.Point(16, 327);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(149, 50);
+            this.StartButton.TabIndex = 4;
+            this.StartButton.Text = "Start Server";
+            this.StartButton.UseVisualStyleBackColor = true;
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
-            // backgroundWorker1
+            // threadReceiver
             // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.threadReceiver.DoWork += new System.ComponentModel.DoWorkEventHandler(this.threadReceiver_DoWork);
             // 
-            // backgroundWorker2
+            // threadSender
             // 
-            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
+            this.threadSender.DoWork += new System.ComponentModel.DoWorkEventHandler(this.threadSender_DoWork);
             // 
-            // textBox1
+            // textChat
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(12, 191);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(327, 62);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textChat.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textChat.Location = new System.Drawing.Point(12, 191);
+            this.textChat.Multiline = true;
+            this.textChat.Name = "textChat";
+            this.textChat.Size = new System.Drawing.Size(327, 62);
+            this.textChat.TabIndex = 6;
+            this.textChat.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // textMessage
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(12, 274);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(327, 36);
-            this.textBox2.TabIndex = 7;
+            this.textMessage.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textMessage.Location = new System.Drawing.Point(12, 274);
+            this.textMessage.Multiline = true;
+            this.textMessage.Name = "textMessage";
+            this.textMessage.Size = new System.Drawing.Size(327, 36);
+            this.textMessage.TabIndex = 7;
             // 
-            // button2
+            // SendButton
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(195, 327);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(148, 50);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Send";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.SendButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SendButton.Location = new System.Drawing.Point(195, 327);
+            this.SendButton.Name = "SendButton";
+            this.SendButton.Size = new System.Drawing.Size(148, 50);
+            this.SendButton.TabIndex = 8;
+            this.SendButton.Text = "Send";
+            this.SendButton.UseVisualStyleBackColor = true;
+            this.SendButton.Click += new System.EventHandler(this.SendButton_Click);
             // 
-            // button3
+            // ConnectButton
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(16, 124);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(149, 52);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Connect";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.ConnectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConnectButton.Location = new System.Drawing.Point(16, 124);
+            this.ConnectButton.Name = "ConnectButton";
+            this.ConnectButton.Size = new System.Drawing.Size(149, 52);
+            this.ConnectButton.TabIndex = 9;
+            this.ConnectButton.Text = "Connect";
+            this.ConnectButton.UseVisualStyleBackColor = true;
+            this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
             // 
-            // textBox3
+            // clientIP
             // 
-            this.textBox3.Location = new System.Drawing.Point(188, 58);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(155, 20);
-            this.textBox3.TabIndex = 10;
+            this.clientIP.Location = new System.Drawing.Point(188, 58);
+            this.clientIP.Name = "clientIP";
+            this.clientIP.Size = new System.Drawing.Size(155, 20);
+            this.clientIP.TabIndex = 10;
             // 
-            // textBox4
+            // clientPort
             // 
-            this.textBox4.Location = new System.Drawing.Point(188, 133);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(154, 20);
-            this.textBox4.TabIndex = 11;
+            this.clientPort.Location = new System.Drawing.Point(188, 133);
+            this.clientPort.Name = "clientPort";
+            this.clientPort.Size = new System.Drawing.Size(154, 20);
+            this.clientPort.TabIndex = 11;
             // 
             // Form1
             // 
@@ -167,17 +165,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(355, 389);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.clientPort);
+            this.Controls.Add(this.clientIP);
+            this.Controls.Add(this.ConnectButton);
+            this.Controls.Add(this.SendButton);
+            this.Controls.Add(this.textMessage);
+            this.Controls.Add(this.textChat);
+            this.Controls.Add(this.StartButton);
+            this.Controls.Add(this.portLabel2);
+            this.Controls.Add(this.portLabel);
+            this.Controls.Add(this.ipLabel2);
+            this.Controls.Add(this.ipLabel);
             this.Name = "Form1";
             this.Text = "Server";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -188,19 +186,19 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label ipLabel;
+        private System.Windows.Forms.Label ipLabel2;
+        private System.Windows.Forms.Label portLabel;
+        private System.Windows.Forms.Label portLabel2;
+        private System.Windows.Forms.Button StartButton;
+        private System.ComponentModel.BackgroundWorker threadReceiver;
+        private System.ComponentModel.BackgroundWorker threadSender;
+        private System.Windows.Forms.TextBox textChat;
+        private System.Windows.Forms.TextBox textMessage;
+        private System.Windows.Forms.Button SendButton;
+        private System.Windows.Forms.Button ConnectButton;
+        private System.Windows.Forms.TextBox clientIP;
+        private System.Windows.Forms.TextBox clientPort;
     }
 }
 

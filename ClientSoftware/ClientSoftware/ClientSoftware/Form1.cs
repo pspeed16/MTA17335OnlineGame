@@ -15,7 +15,14 @@ namespace ClientSoftware
 
         private Image x;
         private Image o;
-        private Image noImage;
+
+
+        bool winner = false;
+
+
+        int cValue = 1;
+        int turn_count = 1;
+
         public Form1()
         {
             InitializeComponent();
@@ -32,12 +39,9 @@ namespace ClientSoftware
 
             x = ClientSoftware.Properties.Resources.X;
             o = ClientSoftware.Properties.Resources.O;
-            noImage = ClientSoftware.Properties.Resources.None;
 
         }
-    
-        int cValue = 1;
-        int turn_count = 1;
+
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -187,12 +191,12 @@ namespace ClientSoftware
         
         void winCondition()
         {
-            bool winner = false;
+           
 
             //horizontal win condition
             if (pictureBox1.Image == x && pictureBox2.Image == x && pictureBox3.Image == x || pictureBox1.Image == o && pictureBox2.Image == o && pictureBox3.Image == o)
             {
-                pictureBox1.Enabled = true;
+                
                 winner = true;
             }
             else if (pictureBox4.Image == x && pictureBox5.Image == x && pictureBox6.Image == x || pictureBox4.Image == o && pictureBox5.Image == o && pictureBox6.Image == o)
@@ -206,7 +210,7 @@ namespace ClientSoftware
             //vertical win condition
             if (pictureBox1.Image == x && pictureBox4.Image == x && pictureBox7.Image == x || pictureBox1.Image == o && pictureBox4.Image == o && pictureBox7.Image == o)
             {
-                pictureBox1.Enabled = true;
+               
                 winner = true;
             }
             else if (pictureBox2.Image == x && pictureBox5.Image == x && pictureBox8.Image == x || pictureBox2.Image == o && pictureBox5.Image == o && pictureBox8.Image == o)
@@ -221,7 +225,7 @@ namespace ClientSoftware
             //cross win condition
             if (pictureBox1.Image == x && pictureBox5.Image == x && pictureBox9.Image == x || pictureBox1.Image == o && pictureBox5.Image == o && pictureBox9.Image == o)
             {
-                pictureBox1.Enabled = true;
+               
                 winner = true;
             }
             else if (pictureBox3.Image == x && pictureBox5.Image == x && pictureBox7.Image == x || pictureBox3.Image == o && pictureBox5.Image == o && pictureBox7.Image == o)
@@ -240,29 +244,16 @@ namespace ClientSoftware
             {
                 MessageBox.Show("Draw!");
             }
+
+            resetGame();
         }
-        
 
         void resetGame()
         {
-
-            var pictureBoxes = new List<PictureBox> { pictureBox1,
-                                                      pictureBox2,
-                                                      pictureBox3,
-                                                      pictureBox4,
-                                                      pictureBox5,
-                                                      pictureBox6,
-                                                      pictureBox7,
-                                                      pictureBox8,
-                                                      pictureBox9 };
-            if (turn_count == 9)
+            if (turn_count == 9 || winner == true)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    pictureBoxes[i].Image = noImage;
+                    this.Close();
 
-                    turn_count = 0;
-                }
             }
 
         }
