@@ -27,15 +27,7 @@ namespace ClientSoftware
             pictureBox9.Parent = PictureContainer;
 
 
-            var pictureBoxes = new List<PictureBox> { pictureBox1,
-                                                      pictureBox2,
-                                                      pictureBox3,
-                                                      pictureBox4,
-                                                      pictureBox5,
-                                                      pictureBox6,
-                                                      pictureBox7,
-                                                      pictureBox8,
-                                                      pictureBox9 };
+            
         }
 
         int cValue = 1;
@@ -44,47 +36,65 @@ namespace ClientSoftware
         {
             player();
 
+            changeFunction(0);
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             player();
 
-
+            changeFunction(1);
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             player();
+
+            changeFunction(2);
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             player();
+
+            changeFunction(3);
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
             player();
+
+            changeFunction(4);
         }
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             player();
+
+            changeFunction(5);
         }
 
         private void pictureBox7_Click(object sender, EventArgs e)
         {
             player();
+
+            changeFunction(6);
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)
         {
             player();
+
+            changeFunction(7);
         }
 
         private void pictureBox9_Click(object sender, EventArgs e)
         {
+
+            player();
+
+            changeFunction(8);
 
         }
         void player()
@@ -100,18 +110,28 @@ namespace ClientSoftware
 
         }
 
-        void changeFunction()
+        void changeFunction(int z)
         {
+
+            var pictureBoxes = new List<PictureBox> { pictureBox1,
+                                                      pictureBox2,
+                                                      pictureBox3,
+                                                      pictureBox4,
+                                                      pictureBox5,
+                                                      pictureBox6,
+                                                      pictureBox7,
+                                                      pictureBox8,
+                                                      pictureBox9 };
 
             if (cValue == 1)
             {
-                pictureBoxes[1] = Properties.Resources.O;
+                pictureBoxes[z].Image = Properties.Resources.O;
             }
             else if (cValue == 2)
             {
-                pictureBox1.Image = Properties.Resources.X;
+                pictureBoxes[z].Image = Properties.Resources.X;
             }
-            pictureBox1.Enabled = false;
+            pictureBoxes[z].Enabled = false;
         }
 
     }
