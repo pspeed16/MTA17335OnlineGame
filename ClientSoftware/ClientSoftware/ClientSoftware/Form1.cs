@@ -133,6 +133,5 @@ namespace ClientSoftware
             }
             pictureBoxes[setImage].Enabled = false;
         }
-
     }
 }

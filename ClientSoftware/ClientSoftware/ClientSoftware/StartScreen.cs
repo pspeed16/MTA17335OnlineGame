@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace ClientSoftware
 {
     public partial class StartScreen : Form
@@ -19,7 +20,9 @@ namespace ClientSoftware
 
         private void connectButton_Click(object sender, EventArgs e)
         {
+            Form1 startGame = new Form1();
 
+            startGame.Show();
         }
     }
 }
