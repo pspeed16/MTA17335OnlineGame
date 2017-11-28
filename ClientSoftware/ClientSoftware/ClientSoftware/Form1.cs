@@ -110,7 +110,7 @@ namespace ClientSoftware
 
         }
 
-        void changeFunction(int z)
+        void changeFunction(int setImage)
         {
 
             var pictureBoxes = new List<PictureBox> { pictureBox1,
@@ -125,13 +125,13 @@ namespace ClientSoftware
 
             if (cValue == 1)
             {
-                pictureBoxes[z].Image = Properties.Resources.O;
+                pictureBoxes[setImage].Image = Properties.Resources.O;
             }
             else if (cValue == 2)
             {
-                pictureBoxes[z].Image = Properties.Resources.X;
+                pictureBoxes[setImage].Image = Properties.Resources.X;
             }
-            pictureBoxes[z].Enabled = false;
+            pictureBoxes[setImage].Enabled = false;
         }
 
     }
