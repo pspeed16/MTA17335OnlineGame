@@ -197,7 +197,7 @@ namespace ClientSoftware
             //horizontal win condition
             if (pictureBox1.Image == x && pictureBox2.Image == x && pictureBox3.Image == x || pictureBox1.Image == o && pictureBox2.Image == o && pictureBox3.Image == o)
             {
-                pictureBox1.Enabled = true;
+                
                 winner = true;
             }
             else if (pictureBox4.Image == x && pictureBox5.Image == x && pictureBox6.Image == x || pictureBox4.Image == o && pictureBox5.Image == o && pictureBox6.Image == o)
@@ -211,7 +211,7 @@ namespace ClientSoftware
             //vertical win condition
             if (pictureBox1.Image == x && pictureBox4.Image == x && pictureBox7.Image == x || pictureBox1.Image == o && pictureBox4.Image == o && pictureBox7.Image == o)
             {
-                pictureBox1.Enabled = true;
+               
                 winner = true;
             }
             else if (pictureBox2.Image == x && pictureBox5.Image == x && pictureBox8.Image == x || pictureBox2.Image == o && pictureBox5.Image == o && pictureBox8.Image == o)
@@ -226,7 +226,7 @@ namespace ClientSoftware
             //cross win condition
             if (pictureBox1.Image == x && pictureBox5.Image == x && pictureBox9.Image == x || pictureBox1.Image == o && pictureBox5.Image == o && pictureBox9.Image == o)
             {
-                pictureBox1.Enabled = true;
+               
                 winner = true;
             }
             else if (pictureBox3.Image == x && pictureBox5.Image == x && pictureBox7.Image == x || pictureBox3.Image == o && pictureBox5.Image == o && pictureBox7.Image == o)
@@ -266,8 +266,7 @@ namespace ClientSoftware
                 for (int i = 0; i < 9; i++)
                 {
                     pictureBoxes[i].Image = noImage;
-
-                    turn_count = 0;
+                    this.Close();
                 }
             }
 
