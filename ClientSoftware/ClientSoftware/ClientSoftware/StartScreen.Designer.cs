@@ -30,8 +30,8 @@
         {
             this.connectButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.ipInput = new System.Windows.Forms.RichTextBox();
+            this.portInput = new System.Windows.Forms.RichTextBox();
             this.ipLabel = new System.Windows.Forms.Label();
             this.portLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,24 +62,27 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Exit";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // richTextBox1
+            // ipInput
             // 
-            this.richTextBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.richTextBox1.Location = new System.Drawing.Point(127, 90);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(201, 33);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
+            this.ipInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ipInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipInput.Location = new System.Drawing.Point(127, 90);
+            this.ipInput.Name = "ipInput";
+            this.ipInput.Size = new System.Drawing.Size(201, 33);
+            this.ipInput.TabIndex = 2;
+            this.ipInput.Text = "";
             // 
-            // richTextBox2
+            // portInput
             // 
-            this.richTextBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.richTextBox2.Location = new System.Drawing.Point(178, 158);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(97, 33);
-            this.richTextBox2.TabIndex = 3;
-            this.richTextBox2.Text = "";
+            this.portInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.portInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.portInput.Location = new System.Drawing.Point(178, 158);
+            this.portInput.Name = "portInput";
+            this.portInput.Size = new System.Drawing.Size(97, 33);
+            this.portInput.TabIndex = 3;
+            this.portInput.Text = "";
             // 
             // ipLabel
             // 
@@ -135,8 +138,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.portLabel);
             this.Controls.Add(this.ipLabel);
-            this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.portInput);
+            this.Controls.Add(this.ipInput);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.connectButton);
             this.Name = "StartScreen";
@@ -150,8 +153,8 @@
 
         private System.Windows.Forms.Button connectButton;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox ipInput;
+        private System.Windows.Forms.RichTextBox portInput;
         private System.Windows.Forms.Label ipLabel;
         private System.Windows.Forms.Label portLabel;
         private System.Windows.Forms.Label label1;

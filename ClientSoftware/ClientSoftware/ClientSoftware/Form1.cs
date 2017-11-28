@@ -12,6 +12,9 @@ namespace ClientSoftware
 {
     public partial class Form1 : Form
     {
+
+        private Image x;
+        private Image o;
         public Form1()
         {
             InitializeComponent();
@@ -26,10 +29,11 @@ namespace ClientSoftware
             pictureBox8.Parent = PictureContainer;
             pictureBox9.Parent = PictureContainer;
 
+            x = ClientSoftware.Properties.Resources.X;
+            o = ClientSoftware.Properties.Resources.O;
 
-            
         }
-
+    
         int cValue = 1;
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -38,6 +42,10 @@ namespace ClientSoftware
 
             changeFunction(0);
 
+            winCondition();
+
+
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -45,6 +53,8 @@ namespace ClientSoftware
             player();
 
             changeFunction(1);
+
+            winCondition();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -52,6 +62,7 @@ namespace ClientSoftware
             player();
 
             changeFunction(2);
+            winCondition();
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
@@ -125,13 +136,22 @@ namespace ClientSoftware
 
             if (cValue == 1)
             {
-                pictureBoxes[setImage].Image = Properties.Resources.O;
+                pictureBoxes[setImage].Image = o;
             }
             else if (cValue == 2)
             {
-                pictureBoxes[setImage].Image = Properties.Resources.X;
+                pictureBoxes[setImage].Image = x;
             }
             pictureBoxes[setImage].Enabled = false;
+        }
+        
+        void winCondition()
+        {
+            if (pictureBox1.Image == x && pictureBox2.Image == x && pictureBox3.Image == x)
+            {
+                pictureBox1.Enabled = true;
+                MessageBox.Show("Hello");
+            }
         }
     }
 }
