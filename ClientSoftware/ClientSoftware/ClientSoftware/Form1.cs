@@ -15,6 +15,7 @@ namespace ClientSoftware
 
         private Image x;
         private Image o;
+        private Image noImage;
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace ClientSoftware
 
             x = ClientSoftware.Properties.Resources.X;
             o = ClientSoftware.Properties.Resources.O;
+            noImage = ClientSoftware.Properties.Resources.None;
 
         }
     
@@ -152,6 +154,184 @@ namespace ClientSoftware
                 pictureBox1.Enabled = true;
                 MessageBox.Show("Hello");
             }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        void resetGame()
+        {
+
+            var pictureBoxes = new List<PictureBox> { pictureBox1,
+                                                      pictureBox2,
+                                                      pictureBox3,
+                                                      pictureBox4,
+                                                      pictureBox5,
+                                                      pictureBox6,
+                                                      pictureBox7,
+                                                      pictureBox8,
+                                                      pictureBox9 };
+            if (turn_count == 9)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    pictureBoxes[i].Image = noImage;
+
+                    turn_count = 0;
+                }
+            }
+
         }
     }
 }
