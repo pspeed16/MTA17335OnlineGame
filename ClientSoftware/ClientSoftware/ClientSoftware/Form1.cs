@@ -37,6 +37,7 @@ namespace ClientSoftware
         }
     
         int cValue = 1;
+        int turn_count = 1;
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -46,8 +47,8 @@ namespace ClientSoftware
 
             winCondition();
 
-
-
+            turn_count++;
+            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -57,6 +58,9 @@ namespace ClientSoftware
             changeFunction(1);
 
             winCondition();
+
+            turn_count++;
+            
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -64,7 +68,11 @@ namespace ClientSoftware
             player();
 
             changeFunction(2);
+
             winCondition();
+
+            turn_count++;
+            
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
@@ -72,6 +80,11 @@ namespace ClientSoftware
             player();
 
             changeFunction(3);
+
+            winCondition();
+
+            turn_count++;
+
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
@@ -79,6 +92,11 @@ namespace ClientSoftware
             player();
 
             changeFunction(4);
+
+            winCondition();
+
+            turn_count++;
+            
         }
 
         private void pictureBox6_Click(object sender, EventArgs e)
@@ -86,6 +104,11 @@ namespace ClientSoftware
             player();
 
             changeFunction(5);
+
+            winCondition();
+
+            turn_count++;
+            
         }
 
         private void pictureBox7_Click(object sender, EventArgs e)
@@ -93,6 +116,11 @@ namespace ClientSoftware
             player();
 
             changeFunction(6);
+
+            winCondition();
+
+            turn_count++;
+            
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)
@@ -100,6 +128,11 @@ namespace ClientSoftware
             player();
 
             changeFunction(7);
+
+            winCondition();
+
+            turn_count++;
+            
         }
 
         private void pictureBox9_Click(object sender, EventArgs e)
@@ -108,6 +141,11 @@ namespace ClientSoftware
             player();
 
             changeFunction(8);
+
+            winCondition();
+
+            turn_count++;
+            
 
         }
         void player()
@@ -149,10 +187,58 @@ namespace ClientSoftware
         
         void winCondition()
         {
+            bool winner = false;
+
+            //horizontal win condition
             if (pictureBox1.Image == x && pictureBox2.Image == x && pictureBox3.Image == x || pictureBox1.Image == o && pictureBox2.Image == o && pictureBox3.Image == o)
             {
                 pictureBox1.Enabled = true;
-                MessageBox.Show("Hello");
+                winner = true;
+            }
+            else if (pictureBox4.Image == x && pictureBox5.Image == x && pictureBox6.Image == x || pictureBox4.Image == o && pictureBox5.Image == o && pictureBox6.Image == o)
+            {
+                winner = true;
+            }
+            else if(pictureBox7.Image == x && pictureBox8.Image == x && pictureBox9.Image == x || pictureBox7.Image == o && pictureBox8.Image == o && pictureBox9.Image == o) {
+                winner = true;
+            }
+
+            //vertical win condition
+            if (pictureBox1.Image == x && pictureBox4.Image == x && pictureBox7.Image == x || pictureBox1.Image == o && pictureBox4.Image == o && pictureBox7.Image == o)
+            {
+                pictureBox1.Enabled = true;
+                winner = true;
+            }
+            else if (pictureBox2.Image == x && pictureBox5.Image == x && pictureBox8.Image == x || pictureBox2.Image == o && pictureBox5.Image == o && pictureBox8.Image == o)
+            {
+                winner = true;
+            }
+            else if (pictureBox3.Image == x && pictureBox6.Image == x && pictureBox9.Image == x || pictureBox3.Image == o && pictureBox6.Image == o && pictureBox9.Image == o)
+            {
+                winner = true;
+            }
+
+            //cross win condition
+            if (pictureBox1.Image == x && pictureBox5.Image == x && pictureBox9.Image == x || pictureBox1.Image == o && pictureBox5.Image == o && pictureBox9.Image == o)
+            {
+                pictureBox1.Enabled = true;
+                winner = true;
+            }
+            else if (pictureBox3.Image == x && pictureBox5.Image == x && pictureBox7.Image == x || pictureBox3.Image == o && pictureBox5.Image == o && pictureBox7.Image == o)
+            {
+                winner = true;
+            }
+
+
+
+            //win or draw method
+            if (winner == true)
+            {
+                MessageBox.Show("You win!");
+            }
+            else if (turn_count == 9)
+            {
+                MessageBox.Show("Draw!");
             }
         }
 
