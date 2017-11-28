@@ -15,7 +15,7 @@ namespace ClientSoftware
 
         private Image x;
         private Image o;
-        private Image noImage;
+
 
         bool winner = false;
 
@@ -39,7 +39,6 @@ namespace ClientSoftware
 
             x = ClientSoftware.Properties.Resources.X;
             o = ClientSoftware.Properties.Resources.O;
-            noImage = ClientSoftware.Properties.Resources.None;
 
         }
 
@@ -251,23 +250,10 @@ namespace ClientSoftware
 
         void resetGame()
         {
-
-            var pictureBoxes = new List<PictureBox> { pictureBox1,
-                                                      pictureBox2,
-                                                      pictureBox3,
-                                                      pictureBox4,
-                                                      pictureBox5,
-                                                      pictureBox6,
-                                                      pictureBox7,
-                                                      pictureBox8,
-                                                      pictureBox9 };
             if (turn_count == 9 || winner == true)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    pictureBoxes[i].Image = noImage;
                     this.Close();
-                }
+
             }
 
         }
