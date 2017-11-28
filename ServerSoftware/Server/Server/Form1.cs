@@ -35,17 +35,7 @@ namespace Server
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) //start and connect client
         {
             client = new TcpClient();
             IPEndPoint IpEnd = new IPEndPoint(IPAddress.Parse(textBox3.Text), int.Parse(textBox4.Text));
@@ -70,7 +60,7 @@ namespace Server
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //start server
         {
             TcpListener listener = new TcpListener(IPAddress.Any, int.Parse(label4.Text));
             listener.Start();
@@ -88,7 +78,7 @@ namespace Server
 
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) //client and server message reciever
         {
             while (client.Connected)
             {
@@ -105,7 +95,7 @@ namespace Server
             }
         }
 
-        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e) //client and server message sender
         {
             if (client.Connected)
             {
@@ -124,29 +114,14 @@ namespace Server
 
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //send button
         {
-            client = new TcpClient();
-            IPEndPoint IpEnd = new IPEndPoint(IPAddress.Parse(label2.Text), int.Parse(label4.Text));
-
-            try
+           if(textBox2.Text !="")
             {
-                client.Connect(IpEnd);
-                if (client.Connected)
-                {
-                    textBox1.AppendText("Connected to server" + "\n");
-                    STW = new StreamWriter(client.GetStream());
-                    STR = new StreamReader(client.GetStream());
-                    STW.AutoFlush = true;
-
-                    backgroundWorker1.RunWorkerAsync();
-                    backgroundWorker2.WorkerSupportsCancellation = true;
-                }
+                textToSend = textBox2.Text;
+                backgroundWorker2.RunWorkerAsync();
             }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message.ToString());
-            }
+            textBox2.Text = "";
         }
     }
 }

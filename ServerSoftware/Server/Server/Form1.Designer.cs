@@ -52,7 +52,7 @@
             this.label1.Size = new System.Drawing.Size(170, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Current IP address:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+      
             // 
             // label2
             // 
@@ -73,7 +73,7 @@
             this.label3.Size = new System.Drawing.Size(115, 24);
             this.label3.TabIndex = 2;
             this.label3.Text = "Current Port:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+           
             // 
             // label4
             // 
@@ -134,7 +134,7 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Send";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
