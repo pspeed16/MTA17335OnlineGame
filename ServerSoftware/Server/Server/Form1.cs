@@ -45,6 +45,31 @@ namespace Server
 
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            client = new TcpClient();
+            IPEndPoint IpEnd = new IPEndPoint(IPAddress.Parse(textBox3.Text), int.Parse(textBox4.Text));
+
+            try
+            {
+                client.Connect(IpEnd);
+                if (client.Connected)
+                {
+                    textBox1.AppendText("Connected to server :D" + "\n");
+                    STR = new StreamReader(client.GetStream());
+                    STW = new StreamWriter(client.GetStream());
+                    STW.AutoFlush = true;
+
+                    backgroundWorker1.RunWorkerAsync();
+                    backgroundWorker2.WorkerSupportsCancellation = true;
+                }
+            }
+            catch(Exception x)
+            {
+                MessageBox.Show(x.Message.ToString());
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             TcpListener listener = new TcpListener(IPAddress.Any, int.Parse(label4.Text));
