@@ -19,7 +19,7 @@ namespace ClientSoftware
 
         bool winner = false;
 
-
+        int changeInt = 0;
         int cValue = 1;
         int turn_count = 1;
 
@@ -45,111 +45,64 @@ namespace ClientSoftware
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            player();
-
-            changeFunction(0);
-
-            winCondition();
-
-            turn_count++;
-            
+            changeInt = 0;
+            lotsoffunctions();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            player();
+            changeInt = 1;
+            lotsoffunctions();
 
-            changeFunction(1);
-
-            winCondition();
-
-            turn_count++;
-            
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            player();
+            changeInt = 2;
+            lotsoffunctions();
 
-            changeFunction(2);
-
-            winCondition();
-
-            turn_count++;
-            
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            player();
-
-            changeFunction(3);
-
-            winCondition();
-
-            turn_count++;
+            changeInt = 3;
+            lotsoffunctions();
 
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-            player();
+            changeInt = 4;
+            lotsoffunctions();
 
-            changeFunction(4);
-
-            winCondition();
-
-            turn_count++;
-            
         }
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            player();
+            changeInt = 5;
+            lotsoffunctions();
 
-            changeFunction(5);
-
-            winCondition();
-
-            turn_count++;
-            
         }
 
         private void pictureBox7_Click(object sender, EventArgs e)
         {
-            player();
+            changeInt = 6;
+            lotsoffunctions();
 
-            changeFunction(6);
-
-            winCondition();
-
-            turn_count++;
-            
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)
         {
-            player();
+            changeInt = 7;
+            lotsoffunctions();
 
-            changeFunction(7);
-
-            winCondition();
-
-            turn_count++;
-            
         }
 
         private void pictureBox9_Click(object sender, EventArgs e)
         {
 
-            player();
-
-            changeFunction(8);
-
-            winCondition();
-
-            turn_count++;
-            
+            changeInt = 8;
+            lotsoffunctions();
 
         }
         void player()
@@ -257,5 +210,24 @@ namespace ClientSoftware
             }
 
         }
+
+        private void lotsoffunctions()
+        {
+            player();
+
+            changeFunction(changeInt);
+
+            winCondition();
+
+            turn_count++;
+        }
+
+        //Need a function that sends data to the server.
+        private void statusSend()
+        {
+            
+        }
+        
+        //Also need one that receives data and updates the board
     }
 }
