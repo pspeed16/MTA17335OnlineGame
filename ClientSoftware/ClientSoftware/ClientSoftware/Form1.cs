@@ -228,6 +228,9 @@ namespace ClientSoftware
         {
             myTurn = false;
             socket.Send(BitConverter.GetBytes(change));
+            socket.Bind(new IPEndPoint(IPAddress.Any,8888));
+            socket.Listen(10);
+            socket.BeginAccept(new AsyncCallback(Receive), null);
         }
         
         //Also need one that receives data and updates the board
