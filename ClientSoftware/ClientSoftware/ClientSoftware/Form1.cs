@@ -8,11 +8,20 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Sockets;
+using System.Net;
+
+using System.Threading;
 
 namespace ClientSoftware
 {
     public partial class Form1 : Form
     {
+        TcpClient socketForServer;
+
+        IPAddress IPADDRESS = IPAddress.Parse("127.0.0.1");
+
+        int portNumber = 8888;
 
         Socket socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
 
@@ -45,6 +54,17 @@ namespace ClientSoftware
 
         }
 
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Console.WriteLine("Connecting...");
+            try
+            {
+                socketForServer.Connect(IPADDRESS, portNumber);
+                Console.WriteLine("Connected");
+            }
+            catch { }
+        }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
