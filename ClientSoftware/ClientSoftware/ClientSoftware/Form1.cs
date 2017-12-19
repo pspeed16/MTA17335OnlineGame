@@ -8,9 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net.Sockets;
 using System.Net;
-
 using System.Threading;
 
 namespace ClientSoftware
@@ -70,65 +68,47 @@ namespace ClientSoftware
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            changeInt = 0;
-            lotsoffunctions();
+            ToSendOrNotToSend(0);
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            changeInt = 1;
-            lotsoffunctions();
-
+            ToSendOrNotToSend(1);
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            changeInt = 2;
-            lotsoffunctions();
-
+            ToSendOrNotToSend(2);
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            changeInt = 3;
-            lotsoffunctions();
-
+            ToSendOrNotToSend(3);
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-            changeInt = 4;
-            lotsoffunctions();
-
+            ToSendOrNotToSend(4);
         }
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            changeInt = 5;
-            lotsoffunctions();
-
+            ToSendOrNotToSend(5);
         }
 
         private void pictureBox7_Click(object sender, EventArgs e)
         {
-            changeInt = 6;
-            lotsoffunctions();
-
+            ToSendOrNotToSend(6);
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)
         {
-            changeInt = 7;
-            lotsoffunctions();
-
+            ToSendOrNotToSend(7);
         }
 
         private void pictureBox9_Click(object sender, EventArgs e)
         {
-
-            changeInt = 8;
-            lotsoffunctions();
-
+            ToSendOrNotToSend(8);
         }
         void player()
         {
@@ -228,7 +208,14 @@ namespace ClientSoftware
 
         void ToSendOrNotToSend(int change)
         {
-
+            if (myTurn)
+            {
+                StatusSend(change);
+                changeFunction(change);
+                player();
+                winCondition();
+                turn_count++;
+            }
         }
 
         void resetGame()
@@ -236,26 +223,16 @@ namespace ClientSoftware
             if (turn_count == 9 || winner == true)
             {
                     this.Close();
-
             }
-
         }
-
-        private void lotsoffunctions()
-        {
-            player();
-
-            changeFunction(changeInt);
-
-            winCondition();
-
-            turn_count++;
-        }
-
         //Need a function that sends data to the server.
-        private void StatusSend()
+        private void StatusSend(int change)
         {
-            socket.Send(BitConverter.GetBytes(changeInt));
+            myTurn = false;
+            socket.Send(BitConverter.GetBytes(change));
+            socket.Bind(new IPEndPoint(IPAddress.Any,8888));
+            socket.Listen(10);
+            socket.BeginAccept(new AsyncCallback(Receive), null);
         }
         
         //Also need one that receives data and updates the board
