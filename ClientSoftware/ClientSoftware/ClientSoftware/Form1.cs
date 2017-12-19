@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +13,8 @@ namespace ClientSoftware
 {
     public partial class Form1 : Form
     {
+
+        Socket socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
 
         private Image x;
         private Image o;
@@ -229,5 +232,18 @@ namespace ClientSoftware
         }
         
         //Also need one that receives data and updates the board
+        public void Receive(Socket sender, byte[] bytes, int declareWin)
+        {
+            int bytesRec = sender.Receive(bytes);
+            Console.WriteLine("Echoed test = {0}",
+            Encoding.ASCII.GetString(bytes, 0, bytesRec));
+
+            if (declareWin == 1)
+            {
+                
+            }
+
+
+        }
     }
 }
