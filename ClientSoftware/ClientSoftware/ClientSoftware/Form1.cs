@@ -7,11 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Sockets;
+using System.Net;
+
+using System.Threading;
 
 namespace ClientSoftware
 {
     public partial class Form1 : Form
     {
+        TcpClient socketForServer;
+
+        IPAddress IPADDRESS = IPAddress.Parse("127.0.0.1");
+
+        int portNumber = 8888;
 
         private Image x;
         private Image o;
