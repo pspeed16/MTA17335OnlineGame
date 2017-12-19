@@ -28,7 +28,7 @@ namespace ClientSoftware
         private Image x;
         private Image o;
 
-
+        bool myTurn;
         bool winner = false;
 
         int changeInt = 0;
@@ -224,6 +224,11 @@ namespace ClientSoftware
             resetGame();
         }
 
+        void ToSendOrNotToSend(int change)
+        {
+
+        }
+
         void resetGame()
         {
             if (turn_count == 9 || winner == true)
@@ -246,9 +251,9 @@ namespace ClientSoftware
         }
 
         //Need a function that sends data to the server.
-        private void statusSend()
+        private void StatusSend()
         {
-            
+            socket.Send(BitConverter.GetBytes(changeInt));
         }
         
         //Also need one that receives data and updates the board
