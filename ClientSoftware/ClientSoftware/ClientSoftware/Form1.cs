@@ -25,6 +25,8 @@ namespace ClientSoftware
 
         Socket socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
 
+
+
         private Image x;
         private Image o;
 
@@ -257,18 +259,16 @@ namespace ClientSoftware
         }
         
         //Also need one that receives data and updates the board
-        public void Receive(Socket sender, byte[] bytes, int declareWin)
+        public void Receive(IAsyncResult asyncResult)
         {
             myTurn = true;
-            int bytesRec = sender.Receive(bytes);
-            Console.WriteLine("Echoed test = {0}",
-            Encoding.ASCII.GetString(bytes, 0, bytesRec));
+            
+            socket.Receive()
 
             if (declareWin == 1)
             {
                 
             }
-
 
         }
     }
