@@ -254,6 +254,7 @@ namespace ClientSoftware
         //Also need one that receives data and updates the board
         public void Receive(Socket sender, byte[] bytes, int declareWin)
         {
+            myTurn = true;
             int bytesRec = sender.Receive(bytes);
             Console.WriteLine("Echoed test = {0}",
             Encoding.ASCII.GetString(bytes, 0, bytesRec));
