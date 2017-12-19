@@ -52,6 +52,17 @@ namespace ClientSoftware
         }
 
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Console.WriteLine("Connecting...");
+            try
+            {
+                socketForServer.Connect(IPADDRESS, portNumber);
+                Console.WriteLine("Connected");
+            }
+            catch { }
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             changeInt = 0;
