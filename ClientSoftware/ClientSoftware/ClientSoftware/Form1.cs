@@ -17,7 +17,10 @@ namespace ClientSoftware
     public partial class Form1 : Form
     {
 
-        public Socket socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
+        public Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+        int portNumber = 8888;
+
 
         private Image x;
         private Image o;
@@ -221,7 +224,7 @@ namespace ClientSoftware
         {
             myTurn = false;
             socket.Send(BitConverter.GetBytes(change));
-            socket.Bind(new IPEndPoint(IPAddress.Any,8888));
+            socket.Bind(new IPEndPoint(IPAddress.Any, portNumber));
             socket.Listen(10);
             socket.BeginAccept(new AsyncCallback(Receive), null);
         }
@@ -244,6 +247,22 @@ namespace ClientSoftware
             //Need to update board before running winCondition
             winCondition();
             myTurn = true;
+        }
+
+        private void connectBtn_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Connecting...");
+            try
+            {
+                socket.Connect(textIP.Text, portNumber);
+                MessageBox.Show("Connected");
+            }
+            //BTW sand made this
+            catch
+            {
+                MessageBox.Show("Failed to connect");
+
+            }
         }
     }
 }
