@@ -22,7 +22,7 @@ namespace ClientSoftware
         private Image x;
         private Image o;
 
-        bool myTurn = true;
+        bool myTurn;
         bool winner = false;
 
         int cValue = 1;
