@@ -23,8 +23,6 @@ namespace ClientSoftware
 
         Socket socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
 
-
-
         private Image x;
         private Image o;
 
@@ -196,7 +194,14 @@ namespace ClientSoftware
             //win or draw method
             if (winner == true)
             {
-                MessageBox.Show("You win!");
+                if (cValue == 1)
+                {
+                    MessageBox.Show("You win!");
+                }
+                else
+                {
+                    MessageBox.Show("You lose!");
+                }
             }
             else if (turn_count == 9)
             {
@@ -238,14 +243,21 @@ namespace ClientSoftware
         //Also need one that receives data and updates the board
         public void Receive(IAsyncResult asyncResult)
         {
-            myTurn = true;
+            //Setting whoWins to 1 before checking winCondition. This means that if the oppoenent has won, the text box will say "You Lose!
+            cValue = 2;
             
-            socket.Receive()
+            //socket.BeginReceive()
+            int bytesRead = socket.EndReceive(asyncResult);
 
-            if (declareWin == 1)
-            {
-                
-            }
+
+            //Update board here
+            int change = 1;
+            changeFunction(change);
+            //Need to update board before running winCondition
+            winCondition();
+
+            myTurn = true;
+
 
         }
     }
