@@ -10,26 +10,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Threading;
+using System.IO;
 
 namespace ClientSoftware
 {
     public partial class Form1 : Form
     {
-        TcpClient socketForServer;
 
-        IPAddress IPADDRESS = IPAddress.Parse("127.0.0.1");
-
-        int portNumber = 8888;
-
-        Socket socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
+        public Socket socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
 
         private Image x;
         private Image o;
 
-        bool myTurn;
+        bool myTurn = true;
         bool winner = false;
 
-        int changeInt = 0;
         int cValue = 1;
         int turn_count = 1;
 
@@ -53,16 +48,7 @@ namespace ClientSoftware
         }
 
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            Console.WriteLine("Connecting...");
-            try
-            {
-                socketForServer.Connect(IPADDRESS, portNumber);
-                Console.WriteLine("Connected");
-            }
-            catch { }
-        }
+
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -239,26 +225,25 @@ namespace ClientSoftware
             socket.Listen(10);
             socket.BeginAccept(new AsyncCallback(Receive), null);
         }
-        
+
         //Also need one that receives data and updates the board
         public void Receive(IAsyncResult asyncResult)
         {
-            //Setting whoWins to 1 before checking winCondition. This means that if the oppoenent has won, the text box will say "You Lose!
+            //Setting cValue to 2 before checking winCondition. This means that if the oppoenent has won, the text box will say "You Lose!
             cValue = 2;
+            byte[] bytes = new byte[256];
+
+            socket.Receive(bytes, 0, bytes.Length, SocketFlags.None);
             
-            //socket.BeginReceive()
             int bytesRead = socket.EndReceive(asyncResult);
 
 
             //Update board here
-            int change = 1;
+            int change = bytesRead;
             changeFunction(change);
             //Need to update board before running winCondition
             winCondition();
-
             myTurn = true;
-
-
         }
     }
 }
