@@ -27,7 +27,6 @@ namespace ClientSoftware
         private Image pictureNotToCheckFor;
         bool myTurn = true;
         bool? winner = null;
-
         int cValue = 1;
         int turn_count = 1;
 
@@ -48,9 +47,6 @@ namespace ClientSoftware
             x = ClientSoftware.Properties.Resources.X;
             o = ClientSoftware.Properties.Resources.O;
         }
-
-
-
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -111,7 +107,8 @@ namespace ClientSoftware
 
             if (myTurn == false) pictureBoxes[setImage].Image = pictureNotToCheckFor;
             else pictureBoxes[setImage].Image = pictureToCheckFor;
-            pictureBoxes[setImage].Enabled = false;
+            this.Invoke((MethodInvoker)delegate { pictureBoxes[setImage].Enabled = false; });
+            
         }
         
         void winCondition()
@@ -200,7 +197,7 @@ namespace ClientSoftware
         {
             if (myTurn)
             {
-                changeFunction(change);
+                this.changeFunction(change);
                 StatusSend(change);
                 winCondition();
                 turn_count++;
@@ -238,8 +235,16 @@ namespace ClientSoftware
                 Console.WriteLine(e.StackTrace);
             }
             //Update board here
-            if (recVal > 9) cValue = recVal - 10;
-            else changeFunction(recVal);
+            if (recVal > 9)
+            {
+                if (recVal == 11) myTurn = false;
+                cValue = recVal - 10;
+            }
+            else
+            {
+                changeFunction(recVal);
+                myTurn = true;
+            }
             if (cValue == 0)
             {
                 pictureToCheckFor = o;
@@ -252,7 +257,7 @@ namespace ClientSoftware
             }
             //Need to update board before running winCondition
             winCondition();
-            myTurn = true;
+            
         }
 
         private void connectBtn_Click(object sender, EventArgs e)
