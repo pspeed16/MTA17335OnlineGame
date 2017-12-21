@@ -224,7 +224,7 @@ namespace ClientSoftware
         //Also need one that receives data and updates the board
         public void Receive(IAsyncResult asyncResult)
         {
-            //Setting cValue to 2 before checking winCondition. This means that if the opponent has won, the text box will say "You Lose!"
+            //Receiving stuff
             byte[] bytes = new byte[4];
             var sync = socket.BeginReceive(bytes, 0, 4, SocketFlags.None, new AsyncCallback(Receive), socket);
             sync.AsyncWaitHandle.WaitOne();
