@@ -17,16 +17,16 @@ namespace ClientSoftware
     public partial class Form1 : Form
     {
 
-        public Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
+        Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         int portNumber = 8888;
-
-
+        IPAddress serverIP;
         private Image x;
         private Image o;
-
+        private Image pictureToCheckFor;
+        private Image pictureNotToCheckFor;
         bool myTurn = true;
-        bool winner = false;
+        bool? winner = null;
 
         int cValue = 1;
         int turn_count = 1;
@@ -47,7 +47,6 @@ namespace ClientSoftware
 
             x = ClientSoftware.Properties.Resources.X;
             o = ClientSoftware.Properties.Resources.O;
-
         }
 
 
@@ -97,22 +96,9 @@ namespace ClientSoftware
         {
             ToSendOrNotToSend(8);
         }
-        void player()
-        {
-            if (cValue == 2)
-            {
-                cValue = 1;
-            }
-            else if (cValue == 1)
-            {
-                cValue = 2;
-            }
-
-        }
 
         void changeFunction(int setImage)
         {
-
             var pictureBoxes = new List<PictureBox> { pictureBox1,
                                                       pictureBox2,
                                                       pictureBox3,
@@ -123,74 +109,84 @@ namespace ClientSoftware
                                                       pictureBox8,
                                                       pictureBox9 };
 
-            if (cValue == 1)
-            {
-                pictureBoxes[setImage].Image = o;
-            }
-            else if (cValue == 2)
-            {
-                pictureBoxes[setImage].Image = x;
-            }
+            if (myTurn == false) pictureBoxes[setImage].Image = pictureNotToCheckFor;
+            else pictureBoxes[setImage].Image = pictureToCheckFor;
             pictureBoxes[setImage].Enabled = false;
         }
         
         void winCondition()
         {
-           
-
-            //horizontal win condition
-            if (pictureBox1.Image == x && pictureBox2.Image == x && pictureBox3.Image == x || pictureBox1.Image == o && pictureBox2.Image == o && pictureBox3.Image == o)
+            PictureBox[,] pbs = new PictureBox[3, 3];
+            int[] winSum = new int[2];
+            winSum[0] = 0;
+            winSum[1] = 0;
+            pbs[0, 0] = pictureBox1;
+            pbs[0, 1] = pictureBox2;
+            pbs[0, 2] = pictureBox3;
+            pbs[1, 0] = pictureBox4;
+            pbs[1, 1] = pictureBox5;
+            pbs[1, 2] = pictureBox6;
+            pbs[2, 0] = pictureBox7;
+            pbs[2, 1] = pictureBox8;
+            pbs[2, 2] = pictureBox9;
+            for (int i=0; i < 3; i++)
             {
-                
-                winner = true;
+                for (int j = 0; j < 3; j++)
+                {
+                    if (pbs[i, j].Image == pictureToCheckFor)
+                    {
+                        if (i == j)
+                        {
+                            winSum[0]++;
+                        }
+                        if (i == 2 - j)
+                        {
+                            winSum[1]++;
+                        }
+                    }
+                    if (pbs[i, j].Image == pictureNotToCheckFor)
+                    {
+                        if (i == j)
+                        {
+                            winSum[0]--;
+                        }
+                        if (i == 2 - j)
+                        {
+                            winSum[1]--;
+                        }
+                    }
+                }
+                //horizontal
+                if (pbs[i, 0].Image==pictureToCheckFor && pbs[i, 1].Image==pictureToCheckFor && pbs[i, 2].Image==pictureToCheckFor)
+                {
+                    winner = true;
+                }
+                //vertical
+                else if(pbs[0, i].Image == pictureToCheckFor && pbs[1, i].Image == pictureToCheckFor && pbs[2, i].Image == pictureToCheckFor)
+                {
+                    winner = true;
+                }
+                else if (pbs[i, 0].Image == pictureNotToCheckFor && pbs[i, 1].Image == pictureNotToCheckFor && pbs[i, 2].Image == pictureNotToCheckFor)
+                {
+                    winner = false;
+                }
+                //vertical
+                else if (pbs[0, i].Image == pictureNotToCheckFor && pbs[1, i].Image == pictureNotToCheckFor && pbs[2, i].Image == pictureNotToCheckFor)
+                {
+                    winner = false;
+                }
             }
-            else if (pictureBox4.Image == x && pictureBox5.Image == x && pictureBox6.Image == x || pictureBox4.Image == o && pictureBox5.Image == o && pictureBox6.Image == o)
-            {
-                winner = true;
-            }
-            else if(pictureBox7.Image == x && pictureBox8.Image == x && pictureBox9.Image == x || pictureBox7.Image == o && pictureBox8.Image == o && pictureBox9.Image == o) {
-                winner = true;
-            }
-
-            //vertical win condition
-            if (pictureBox1.Image == x && pictureBox4.Image == x && pictureBox7.Image == x || pictureBox1.Image == o && pictureBox4.Image == o && pictureBox7.Image == o)
-            {
-               
-                winner = true;
-            }
-            else if (pictureBox2.Image == x && pictureBox5.Image == x && pictureBox8.Image == x || pictureBox2.Image == o && pictureBox5.Image == o && pictureBox8.Image == o)
-            {
-                winner = true;
-            }
-            else if (pictureBox3.Image == x && pictureBox6.Image == x && pictureBox9.Image == x || pictureBox3.Image == o && pictureBox6.Image == o && pictureBox9.Image == o)
-            {
-                winner = true;
-            }
-
-            //cross win condition
-            if (pictureBox1.Image == x && pictureBox5.Image == x && pictureBox9.Image == x || pictureBox1.Image == o && pictureBox5.Image == o && pictureBox9.Image == o)
-            {
-               
-                winner = true;
-            }
-            else if (pictureBox3.Image == x && pictureBox5.Image == x && pictureBox7.Image == x || pictureBox3.Image == o && pictureBox5.Image == o && pictureBox7.Image == o)
-            {
-                winner = true;
-            }
-
-
+            if (winSum[0] == 3 || winSum[1] == 3) winner = true;
+            if (winSum[0] == -3 || winSum[1] == -3) winner = false;
 
             //win or draw method
             if (winner == true)
             {
-                if (cValue == 1)
-                {
-                    MessageBox.Show("You win!");
-                }
-                else
-                {
-                    MessageBox.Show("You lose!");
-                }
+                MessageBox.Show("You win!");
+            }
+            else if (winner == false)
+            {
+                MessageBox.Show("You lose!");
             }
             else if (turn_count == 9)
             {
@@ -204,9 +200,8 @@ namespace ClientSoftware
         {
             if (myTurn)
             {
-                StatusSend(change);
                 changeFunction(change);
-                player();
+                StatusSend(change);
                 winCondition();
                 turn_count++;
             }
@@ -216,7 +211,7 @@ namespace ClientSoftware
         {
             if (turn_count == 9 || winner == true)
             {
-                    this.Close();
+                this.Close();
             }
         }
         //Need a function that sends data to the server.
@@ -224,26 +219,37 @@ namespace ClientSoftware
         {
             myTurn = false;
             socket.Send(BitConverter.GetBytes(change));
-            socket.Bind(new IPEndPoint(IPAddress.Any, portNumber));
-            socket.Listen(10);
-            socket.BeginAccept(new AsyncCallback(Receive), null);
         }
 
         //Also need one that receives data and updates the board
         public void Receive(IAsyncResult asyncResult)
         {
-            //Setting cValue to 2 before checking winCondition. This means that if the oppoenent has won, the text box will say "You Lose!
-            cValue = 2;
-            byte[] bytes = new byte[256];
-
-            socket.Receive(bytes, 0, bytes.Length, SocketFlags.None);
-            
-            int bytesRead = socket.EndReceive(asyncResult);
-
-
+            //Setting cValue to 2 before checking winCondition. This means that if the opponent has won, the text box will say "You Lose!"
+            byte[] bytes = new byte[4];
+            var sync = socket.BeginReceive(bytes, 0, 4, SocketFlags.None, new AsyncCallback(Receive), socket);
+            sync.AsyncWaitHandle.WaitOne();
+            int recVal = BitConverter.ToInt32(bytes, 0);
+            try
+            {
+                socket.EndReceive(asyncResult);
+            } 
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
             //Update board here
-            int change = bytesRead;
-            changeFunction(change);
+            if (recVal > 9) cValue = recVal - 10;
+            else changeFunction(recVal);
+            if (cValue == 0)
+            {
+                pictureToCheckFor = o;
+                pictureNotToCheckFor = x;
+            }
+            else
+            {
+                pictureToCheckFor = x;
+                pictureNotToCheckFor = o;
+            }
             //Need to update board before running winCondition
             winCondition();
             myTurn = true;
@@ -254,14 +260,14 @@ namespace ClientSoftware
             Console.WriteLine("Connecting...");
             try
             {
-                socket.Connect(textIP.Text, portNumber);
+                serverIP = IPAddress.Parse(textIP.Text);
+                socket.BeginConnect(new IPEndPoint(serverIP, portNumber), new AsyncCallback(Receive), socket);
                 MessageBox.Show("Connected");
             }
             //BTW sand made this
             catch
             {
                 MessageBox.Show("Failed to connect");
-
             }
         }
     }
