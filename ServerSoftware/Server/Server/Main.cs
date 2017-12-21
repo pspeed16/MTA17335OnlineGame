@@ -16,6 +16,7 @@ namespace Server
     {
         int clientCounter = 0;
         Listener listener;
+        private static byte[] buffer = new byte[4096];
         public Main()
         {
             InitializeComponent();
@@ -72,9 +73,11 @@ namespace Server
 
                     if (client.ID == sender.ID)
                     {
+                        client.sck.Send(data);
                         int realData = BitConverter.ToInt16(data, 0);
                         lstClient.Items[i].SubItems[2].Text = realData.ToString();
                         lstClient.Items[i].SubItems[3].Text = DateTime.Now.ToString();
+                        
                         break;
                     }
                 }
