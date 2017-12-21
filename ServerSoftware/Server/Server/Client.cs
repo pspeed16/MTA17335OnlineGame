@@ -20,7 +20,12 @@ namespace Server
             private set;
         }
 
-        Socket sck;
+        public Socket sck
+        {
+            get;
+            private set;
+        }
+        
         public Client(Socket accepted)
         {
             sck = accepted;
