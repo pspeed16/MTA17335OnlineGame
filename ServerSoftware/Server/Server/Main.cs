@@ -69,15 +69,15 @@ namespace Server
             {
                 for (int i = 0; i < lstClient.Items.Count; i++)
                 {
+
                     Client client = lstClient.Items[i].Tag as Client;
 
-                    if (client.ID == sender.ID)
+                    if (client.ID != sender.ID)
                     {
                         client.sck.Send(data);
                         int realData = BitConverter.ToInt16(data, 0);
                         lstClient.Items[i].SubItems[2].Text = realData.ToString();
                         lstClient.Items[i].SubItems[3].Text = DateTime.Now.ToString();
-                        
                         break;
                     }
                 }

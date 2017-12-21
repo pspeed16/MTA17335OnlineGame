@@ -25,7 +25,8 @@ namespace Server
             get;
             private set;
         }
-        
+
+
         public Client(Socket accepted)
         {
             sck = accepted;
