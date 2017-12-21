@@ -80,6 +80,12 @@ namespace Server
                         lstClient.Items[i].SubItems[3].Text = DateTime.Now.ToString();
                         break;
                     }
+
+                    if (client.ID != sender.ID)
+                    {
+                        client.sck.Send(data);
+                        break;
+                    }
                 }
             });
         }
