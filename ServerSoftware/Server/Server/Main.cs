@@ -80,6 +80,12 @@ namespace Server
                         
                         break;
                     }
+
+                    if (client.ID != sender.ID)
+                    {
+                        client.sck.Send(data);
+                        break;
+                    }
                 }
             });
         }
