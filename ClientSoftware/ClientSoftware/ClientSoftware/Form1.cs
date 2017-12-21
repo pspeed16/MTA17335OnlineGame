@@ -264,7 +264,6 @@ namespace ClientSoftware
                 socket.BeginConnect(new IPEndPoint(serverIP, portNumber), new AsyncCallback(Receive), socket);
                 MessageBox.Show("Connected");
             }
-            //BTW sand made this
             catch
             {
                 MessageBox.Show("Failed to connect");
