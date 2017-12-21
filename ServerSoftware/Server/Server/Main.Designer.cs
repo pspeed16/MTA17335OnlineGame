@@ -1,4 +1,4 @@
-﻿namespace ServerTicTacToe
+﻿namespace Server
 {
     partial class Main
     {

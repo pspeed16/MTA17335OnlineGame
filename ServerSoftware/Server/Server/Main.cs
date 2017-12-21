@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 
-namespace ServerTicTacToe
+namespace Server
 {
     public partial class Main : Form
     {

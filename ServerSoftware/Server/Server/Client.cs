@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
-namespace ServerTicTacToe
+namespace Server
 {
     class Client
     {
