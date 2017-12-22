@@ -16,7 +16,7 @@ namespace ClientSoftware
 {
     public partial class Form1 : Form
     {
-
+        //Declaring and initializing necessary sockets, images, and variables
         Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         int portNumber = 8888;
@@ -47,7 +47,7 @@ namespace ClientSoftware
             x = ClientSoftware.Properties.Resources.X;
             o = ClientSoftware.Properties.Resources.O;
         }
-
+        //Making the system react when the player clicks on a cell in the game board
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             ToSendOrNotToSend(0);
@@ -93,6 +93,7 @@ namespace ClientSoftware
             ToSendOrNotToSend(8);
         }
 
+        //Placing a square or circle on the board depending on which players turn it currently is
         void changeFunction(int setImage)
         {
             var pictureBoxes = new List<PictureBox> { pictureBox1,
@@ -193,6 +194,7 @@ namespace ClientSoftware
             resetGame();
         }
 
+        //Calling functions necessary to update board, send data to the server, check whether someone wins or it is a draw, and increasing turn count
         void ToSendOrNotToSend(int change)
         {
             if (myTurn)
@@ -211,14 +213,14 @@ namespace ClientSoftware
                 this.Close();
             }
         }
-        //Need a function that sends data to the server.
+        //Sending data to server
         private void StatusSend(int change)
         {
             myTurn = false;
             socket.Send(BitConverter.GetBytes(change));
         }
 
-        //Also need one that receives data and updates the board
+        //Receiving data from server and using it to update status of the game board.
         public void Receive(IAsyncResult asyncResult)
         {
             //Receiving stuff
@@ -255,11 +257,12 @@ namespace ClientSoftware
                 pictureToCheckFor = x;
                 pictureNotToCheckFor = o;
             }
-            //Need to update board before running winCondition
+            //Running winCondition to check whether the oppoenent won, or if it was a draw
             winCondition();
             
         }
 
+        //Connecting to the server when clicking the connect button
         private void connectBtn_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Connecting...");
