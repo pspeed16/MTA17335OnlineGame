@@ -104,7 +104,7 @@ namespace ClientSoftware
                                                       pictureBox7,
                                                       pictureBox8,
                                                       pictureBox9 };
-
+            //Changes the pictureboxes to the proper images upon being called.
             if (myTurn == false) pictureBoxes[setImage].Image = pictureNotToCheckFor;
             else pictureBoxes[setImage].Image = pictureToCheckFor;
             this.Invoke((MethodInvoker)delegate { pictureBoxes[setImage].Enabled = false; });
@@ -113,6 +113,7 @@ namespace ClientSoftware
         
         void winCondition()
         {
+            //Declaring necessary variabes to check for a winer.
             PictureBox[,] pbs = new PictureBox[3, 3];
             int[] winSum = new int[2];
             winSum[0] = 0;
@@ -126,10 +127,13 @@ namespace ClientSoftware
             pbs[2, 0] = pictureBox7;
             pbs[2, 1] = pictureBox8;
             pbs[2, 2] = pictureBox9;
+            //The loops that check whether a player has won or lost.
             for (int i=0; i < 3; i++)
             {
+                //Looping through pictureboxes to check whether there is a winner in the diagonal.
                 for (int j = 0; j < 3; j++)
                 {
+                    //If the picture in the picturebox is the one corresponding to the player's shape, add one to the win-counter.
                     if (pbs[i, j].Image == pictureToCheckFor)
                     {
                         if (i == j)
@@ -141,6 +145,7 @@ namespace ClientSoftware
                             winSum[1]++;
                         }
                     }
+                    //If the picture is not the player's shape, remove one from the win-counter.
                     if (pbs[i, j].Image == pictureNotToCheckFor)
                     {
                         if (i == j)
@@ -173,6 +178,7 @@ namespace ClientSoftware
                     winner = false;
                 }
             }
+            //If the win-counter is positive 3, the player on this client has won. If it is negative 3, the player has lost. 
             if (winSum[0] == 3 || winSum[1] == 3) winner = true;
             if (winSum[0] == -3 || winSum[1] == -3) winner = false;
 
@@ -192,7 +198,7 @@ namespace ClientSoftware
 
             resetGame();
         }
-
+        //ToSendOrNotToSend checks whether it's the player's turn, and if it is, it runs all the necessary methods.
         void ToSendOrNotToSend(int change)
         {
             if (myTurn)
@@ -211,9 +217,9 @@ namespace ClientSoftware
                 this.Close();
             }
         }
-        //Need a function that sends data to the server.
         private void StatusSend(int change)
         {
+            //Sends which picturebox was clicked to the server.
             myTurn = false;
             socket.Send(BitConverter.GetBytes(change));
         }
@@ -245,6 +251,7 @@ namespace ClientSoftware
                 changeFunction(recVal);
                 myTurn = true;
             }
+            //Defining what shape the player has.
             if (cValue == 0)
             {
                 pictureToCheckFor = o;
@@ -265,6 +272,7 @@ namespace ClientSoftware
             Console.WriteLine("Connecting...");
             try
             {
+                //Beginning the connection, also listening for incoming signals to the scoket.
                 serverIP = IPAddress.Parse(textIP.Text);
                 socket.BeginConnect(new IPEndPoint(serverIP, portNumber), new AsyncCallback(Receive), socket);
                 MessageBox.Show("Connected");
