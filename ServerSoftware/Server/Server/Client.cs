@@ -9,6 +9,7 @@ namespace Server
 {
     class Client
     {
+        //makes getters and setters for the ID, EndPoint and Sockket
         public string ID
         {
             get;
@@ -26,14 +27,16 @@ namespace Server
             private set;
         }
 
-
+        // public Method that with a socket variable called accepted
         public Client(Socket accepted)
         {
+            // inesilaiser the variables 
             sck = accepted;
             ID = Guid.NewGuid().ToString();
             EndPoint = (IPEndPoint)sck.RemoteEndPoint;
             sck.BeginReceive(new byte[] { 0 }, 0, 0, 0, callback, null);
         }
+        // this function handles the receiving of data and the Disconnection of a Client 
         void callback(IAsyncResult ar)
         {
             try
@@ -65,6 +68,8 @@ namespace Server
                 }
             }
         }
+
+        // Closes the socket and Disposes of the data.
         public void Close()
         {
             sck.Close();
