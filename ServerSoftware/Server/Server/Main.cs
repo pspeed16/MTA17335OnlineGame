@@ -14,20 +14,25 @@ namespace Server
 {
     public partial class Main : Form
     {
+        //initializes variables
         int clientCounter = 0;
         Listener listener;
         private static byte[] buffer = new byte[4096];
+
         public Main()
         {
             InitializeComponent();
+            //initialize a new listener on port 8888
             listener = new Listener(8888);
             listener.SocketAccepted += new Listener.SocketAcceptedhandler(listener_SocketAccepted);
             Load += new EventHandler(Main_load);
         }
+        
         void Main_load(Object sender, EventArgs e)
         {
             listener.Start();
         }
+        //This method handles the client information and adds an item in the GUI for the client.
         void listener_SocketAccepted(System.Net.Sockets.Socket e)
         {
             Client client = new Client(e);
@@ -46,6 +51,7 @@ namespace Server
                 lstClient.Items.Add(i);
             });
         }
+        //This method removes the client from the server GUI
         void client_Disconnected(Client sender)
         {
             Invoke((MethodInvoker)delegate
@@ -63,6 +69,7 @@ namespace Server
                 }
             });
         }
+        //This method sends data to the clients and updates the Server GUI.
         void client_Received(Client sender, byte[] data)
         {
             Invoke((MethodInvoker)delegate
