@@ -36,7 +36,7 @@ namespace Server
             EndPoint = (IPEndPoint)sck.RemoteEndPoint;
             sck.BeginReceive(new byte[] { 0 }, 0, 0, 0, callback, null);
         }
-        //This function handles the receiving of data and the Disconnection of a Client. 
+        //This Method handles the receiving of data and the Disconnection of a Client. 
         void callback(IAsyncResult ar)
         {
             try
